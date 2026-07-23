@@ -1,56 +1,56 @@
 # Waterfall
 
-Waterfall, Arc Testnet üzerinde çalışan basit bir USDC treasury sözleşmesidir.
+Waterfall is a simple USDC treasury contract built for Arc Testnet.
 
-Treasury'ye gönderilen USDC, önceden belirlenen kurallara göre sırayla dağıtılır.
-Önceki kurallar önceliklidir. Bakiye yetersizse sonraki kurallar daha az ödeme
-alır veya hiç ödeme alamaz.
+USDC sent to the treasury is distributed through a list of ordered rules.
+Earlier rules have priority. If the balance is not enough, later rules receive
+less or nothing.
 
-## Şu anki durum
+## Current status
 
-Sözleşme tarafının ilk sürümü hazır.
+The first version of the smart contract is complete.
 
-- Yüzdelik ödeme
-- Sabit ödeme
-- Hedef bakiyeye tamamlama
-- Kalan bakiyenin tamamını gönderme
-- En fazla 6 sıralı kural
-- Owner tarafından kural yönetimi
-- Herkes tarafından çalıştırılabilen dağıtım
-- Pause, unpause ve acil çekim
-- Dağıtım önizlemesi
+- Percentage payments
+- Fixed payments
+- Target balance top-ups
+- Remainder payments
+- Up to 6 ordered rules
+- Owner-managed rule configuration
+- Permissionless execution
+- Pause, unpause and emergency withdrawal
+- Distribution preview
 
-Frontend ve Arc Testnet deployment henüz eklenmedi.
+The frontend and Arc Testnet deployment have not been added yet.
 
-## Örnek dağıtım
+## Example distribution
 
-100 USDC için:
+For a treasury balance of 100 USDC:
 
-| Kural | Tutar |
+| Rule | Amount |
 | --- | ---: |
 | Taxes | 20 USDC |
 | Supplier | 30 USDC |
 | Reserve | 25 USDC |
 | Profit | 25 USDC |
 
-Reserve adresinde zaten 25 USDC varsa ikinci dağıtımda reserve ödeme almaz ve
-profit 50 USDC alır.
+If the reserve address already holds 25 USDC, it receives nothing during the
+second distribution and the profit address receives 50 USDC.
 
-## Testler
+## Tests
 
-Testlerde kural kontrolleri, yetkiler, pause işlemleri, yetersiz bakiye,
-dağıtım önizlemesi ve temel demo senaryoları kontrol ediliyor.
+The test suite covers rule validation, permissions, pause controls, insufficient
+balances, distribution previews and the main demo scenarios.
 
-Son durum:
+Current result:
 
 ```text
 26 tests passed
 0 tests failed
 ```
 
-## Kurulum
+## Setup
 
-Foundry kurulu olmalıdır.
+Foundry is required.
 
 ```bash
 cd contracts
@@ -60,18 +60,18 @@ forge build
 forge test
 ```
 
-## Proje yapısı
+## Project structure
 
 ```text
 contracts/
-├── src/WaterfallTreasury.sol
-├── test/WaterfallTreasury.t.sol
-├── test/mocks/MockUSDC.sol
-├── foundry.toml
-└── remappings.txt
+|-- src/WaterfallTreasury.sol
+|-- test/WaterfallTreasury.t.sol
+|-- test/mocks/MockUSDC.sol
+|-- foundry.toml
+`-- remappings.txt
 ```
 
-`MockUSDC` yalnızca yerel testlerde kullanılır. Arc Testnet üzerinde resmi USDC
-kontratı kullanılacaktır.
+`MockUSDC` is only used for local tests. The official USDC contract will be used
+on Arc Testnet.
 
-Hackathon prototipidir. Denetlenmemiştir. Yalnızca testnet kullanımı içindir.
+Hackathon prototype. Not audited. Testnet use only.
