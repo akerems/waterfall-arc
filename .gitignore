@@ -18,6 +18,7 @@ out/
 cache/
 broadcast/
 artifacts/
+contracts/lib/
 
 # System
 .DS_Store
