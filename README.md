@@ -1,6 +1,6 @@
 # Waterfall
 
-Waterfall is a simple USDC treasury contract built for Arc Testnet.
+Waterfall is a simple USDC treasury contract built for Arc's "Programmable Money Hackathon" Hackathon.
 
 USDC sent to the treasury is distributed through a list of ordered rules.
 Earlier rules have priority. If the balance is not enough, later rules receive
