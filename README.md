@@ -22,6 +22,20 @@ The first version of the smart contract is complete.
 
 The frontend and Arc Testnet deployment have not been added yet.
 
+## Planned Circle integration
+
+We plan to add a **Fund from another chain** option with
+[Circle App Kit](https://docs.arc.io/app-kit).
+
+The first version will use App Kit Bridge with a browser wallet:
+
+1. Bridge USDC from a supported testnet, such as Ethereum Sepolia, to Arc Testnet.
+2. Transfer the received USDC to the Waterfall treasury.
+3. Preview and execute the existing distribution rules.
+
+This will be added after the core Arc funding and distribution flow is working.
+It is not implemented yet.
+
 ## Example distribution
 
 For a treasury balance of 100 USDC:
